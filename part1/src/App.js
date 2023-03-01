@@ -1,28 +1,51 @@
+import { useState } from 'react';
 import './App.css';
 
 
-const Mensaje = (params) => {
-  console.log(params);
-  return <h1 style={{color: params.color }}>
-    {params.message}
-    </h1>
+const WarningNotUsed = () => {
+  return <h1>Sin usar el contador</h1>
 }
 
-
-const Description = () => {
-  return <p>Esta es la app del curso fullstackopen</p>
+const ListOfClicks = ({clicks}) => {
+  return <p>{clicks.join(',')}</p>
 }
 
 
 const App = () => {
+  //const [left, setLeft] = useState(0)
+  //const [right, setRight] = useState(2)
+
+  const [clicks, setClicks] = useState([]);
+
+  const handleClickLeft = () => {
+    setClicks(prevClicks => ([...prevClicks, 'L']));
+  }
+
+  const handleClickRight = () => {
+    setClicks(prevClicks => ([...prevClicks, 'R']));
+  }
+
+  const leftClicks = clicks.filter(click => click === 'L');
+  const rightClicks = clicks.filter(click => click === 'R');
+
   
   return (
-    <div className="App">
-      <Mensaje color='red' message='Estamos trabajando en ello'/>
-      <Mensaje color='green' message='Paciencia'/>
-      <Description />
+    <div>
+      {leftClicks.length}
+      <button onClick={handleClickLeft}>
+        left
+      </button>
+      <button onClick={handleClickRight}>
+        right
+      </button>
+      {rightClicks.length}
+      <p>Click totales: {clicks.length}</p>
+      {clicks.length === 0 
+        ? <WarningNotUsed />
+        : <ListOfClicks clicks={clicks}/>
+    } 
     </div>
-  );
+  )
 }
 
 export default App;

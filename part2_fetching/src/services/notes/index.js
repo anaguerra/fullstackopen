@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const create = ({title, body, userId}) => {
-    return Promise.reject('la Api ha petado');
     return axios
      .post('https://jsonplaceholder.typicode.com/posts', { body, userId})
      .then(response => {

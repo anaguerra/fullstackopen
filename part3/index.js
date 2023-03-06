@@ -70,12 +70,8 @@ app.post('/api/notes', (request, response) => {
     date: new Date().toISOString()
   }
 
-  console.log(newNote);
-
-  notes = [...notes, newNote];
-  //notes = notes.concat(newNote);
-  response.status(201);
-  response.json(newNote);
+  notes = [...notes, newNote]; //notes = notes.concat(newNote);
+  response.status(201).json(newNote);
 
 });
 

@@ -30,7 +30,7 @@ const App = (props) => {
     const noteAddToState = {
       userId: 1,
       title: newNote,
-      body: newNote,
+      content: newNote,
     }
 
   setError('');

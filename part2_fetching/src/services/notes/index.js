@@ -1,8 +1,10 @@
 import axios from "axios";
+//const baseUrl = 'https://jsonplaceholder.typicode.com/posts'
+const baseUrl = 'http://localhost:3001/api/notes'
 
 export const create = ({title, body, userId}) => {
     return axios
-     .post('https://jsonplaceholder.typicode.com/posts', { body, userId})
+     .post(baseUrl, { body, userId})
      .then(response => {
         const { data } = response;
         return data;
@@ -10,7 +12,7 @@ export const create = ({title, body, userId}) => {
 };
 
 export const getAll = () => {
-    return axios.get('https://jsonplaceholder.typicode.com/posts')
+    return axios.get(baseUrl)
         .then((response) => {
             const {data} = response;
             return data;

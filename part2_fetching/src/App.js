@@ -15,6 +15,7 @@ const App = (props) => {
     setLoading(true);
     
     getAllNotes().then((notes) => {
+        console.log(notes);
         setNotes(notes);
         setLoading(false);
       })
